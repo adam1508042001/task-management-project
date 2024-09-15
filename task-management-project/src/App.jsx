@@ -1,9 +1,17 @@
 import React from 'react'
+import Header from './components/Header';
+import Center from "./components/Center";
 
 function App() {
   return (
-    <div className='text-4xl text-red-600'>
-      good morning
+    <div >
+      {/* header section */}
+      <Header />
+
+
+      {/* center section */}
+      <Center />
+
     </div>
   )
 }
