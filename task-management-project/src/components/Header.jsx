@@ -13,7 +13,7 @@ function Header() {
 
 
     return (
-        <div className=" p-4 fixed left-0 bg-white dark:bg-[#2b2c37] z-50 right-0 ">
+        <div className=" p-4 fixed left-0 bg-gray-400 dark:bg-[#2b2c37] z-50 right-0 ">
 
             <header className=" flex justify-between dark:text-white items-center " >
 
@@ -25,7 +25,7 @@ function Header() {
                     </h3>
                     <div className=" flex items-center ">
                         <h3 className=" truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans  ">
-                            board name
+                            Board name
                         </h3>
 
                         <img src={openDropdown ? iconUp : iconDown} alt="dropDown icon " className=" w-3 ml-2 md:hidden" onClick={() => setOpenDropdown(state => !state)} />
