@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@headlessui/react": "^2.1.8"
+    "@headlessui/react": "^2.1.8",
+    "tailwind-scrollbar-hide": "^1.1.7"
   }
 }

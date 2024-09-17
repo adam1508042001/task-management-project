@@ -6,7 +6,22 @@ const boardsSlice = createSlice({
     name : 'boards',
     initialState : data.boards,
     reducers : {
-        //si on veut modifier l'etat de slice en repondant a une action 
+
+        addBoard: (state, action) => {
+            const isActive = state.length > 0 ? false : true;
+            const payload = action.payload;
+            const board = {
+              name: payload.name,
+              isActive,
+              columns: [],
+            };
+            board.columns = payload.newColumns;
+            state.push(board);
+          },
+
+
+
+
         }
 })
 

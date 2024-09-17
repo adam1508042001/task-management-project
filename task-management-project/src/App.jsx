@@ -1,12 +1,17 @@
-import React from 'react'
+import  {useState } from 'react'
 import Header from './components/Header';
 import Center from "./components/Center";
 
+
 function App() {
+
+const [boardModalOpen, setBoardModalOpen] = useState(false)
+
+
   return (
     <div >
       {/* header section */}
-      <Header />
+      <Header boardModalOpen={boardModalOpen}  setBoardModalOpen={setBoardModalOpen} />
 
 
       {/* center section */}
