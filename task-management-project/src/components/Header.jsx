@@ -4,12 +4,20 @@ import iconDown from "../assets/icon-chevron-down.svg";
 import iconUp from "../assets/icon-chevron-up.svg";
 import elipsis from "../assets/icon-vertical-ellipsis.svg";
 import HeaderDropdown from '../components/HeaderDropdown';
+import AddEditBoardModal from "../modals/AddEditBoardModal";
+import { useDispatch, useSelector } from "react-redux";
 
-function Header() {
+
+function Header({setBoardModalOpen , boardModalOpen }) {
 
 
     const [openDropdown, setOpenDropdown] = useState(false)
 
+    const [boardtype, setBoardtype] = useState('add')
+
+    const dispatch = useDispatch();
+    const boards = useSelector((state) => state.boards);
+    const board = boards.find((board) => board.isActive);
 
 
     return (
@@ -23,9 +31,9 @@ function Header() {
                     <h3 className=" md:text-4xl  hidden md:inline-block font-bold  font-sans">
                         TaskIt
                     </h3>
-                    <div className=" flex items-center ">
+                    <div className=" cursor-pointer flex items-center ">
                         <h3 className=" truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans  ">
-                            Board name
+                            {board.className}
                         </h3>
 
                         <img src={openDropdown ? iconUp : iconDown} alt="dropDown icon " className=" w-3 ml-2 md:hidden" onClick={() => setOpenDropdown(state => !state)} />
@@ -62,9 +70,12 @@ function Header() {
 
             </header >
 
-            {openDropdown && <HeaderDropdown setOpenDropdown={setOpenDropdown}/>}
+            {openDropdown && <HeaderDropdown setBoardModalOpen={setBoardModalOpen} setOpenDropdown={setOpenDropdown}/>}
 
-
+            {
+                // type add pour afficher la version add de modal
+                boardModalOpen && <AddEditBoardModal  type={boardtype}  setBoardModalOpen={setBoardModalOpen}/> 
+            }
 
         </div >
     )
