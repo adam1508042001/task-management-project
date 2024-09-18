@@ -120,6 +120,11 @@ function AddEditBoardModal({setBoardModalOpen, type  }) {
           />
         </div>
 
+
+
+
+
+
           {/* Board Columns */}
 
           <div className="mt-8 flex flex-col space-y-3">
@@ -127,6 +132,8 @@ function AddEditBoardModal({setBoardModalOpen, type  }) {
           <label className=" text-sm dark:text-white text-gray-500">
             Board Columns
           </label>
+
+
 
           {newColumns.map((column, index) => (
             <div key={index} className=" flex items-center w-full ">
@@ -138,6 +145,9 @@ function AddEditBoardModal({setBoardModalOpen, type  }) {
                 type="text"
                 value={column.name}
               />
+              
+
+              
               <img
                 src={crossIcon}
                 onClick={() => {
