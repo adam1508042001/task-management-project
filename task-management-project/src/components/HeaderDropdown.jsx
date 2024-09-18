@@ -22,6 +22,7 @@ function HeaderDropdown({ setOpenDropdown, setBoardModalOpen }) {
 
   const boards = useSelector((state) => state.boards)
 
+  const dispatch = useDispatch()
 
 
   return (
@@ -50,12 +51,18 @@ function HeaderDropdown({ setOpenDropdown, setBoardModalOpen }) {
         <div className="  dropdown-board  ">
           {boards.map((board, index) => (
             <div
-              className={` cursor-pointer flex items-baseline dark:text-white space-x-2 px-5 py-4  ${board.isActive &&
-                " bg-[#635fc7] rounded-r-full text-white mr-8 "
+              className={` cursor-pointer flex items-baseline dark:text-white space-x-2 px-5 py-4 
+                 ${board.isActive &&
+                " bg-[#f61d1d]  rounded-r-full text-white mr-8 "
                 } `}
               key={index}
+
               onClick={() => {
+
+
                 dispatch(boardsSlice.actions.setBoardActive({ index }));
+
+                
               }}
             >
               <img src={boardIcon} alt="icon" className="  filter-white  h-4 " />{" "}

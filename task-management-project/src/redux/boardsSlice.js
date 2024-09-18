@@ -18,16 +18,31 @@ const boardsSlice = createSlice({
             board.columns = payload.newColumns;
             state.push(board);
           },
+        
+
+
+        
+
+
+          // Action pour activer un board
+    setBoardActive: (state, action) => {
+      const index = action.payload.index;
+      // On parcourt tous les boards et on met isActive à true seulement pour le board sélectionné
+      state.forEach((board, i) => {
+        board.isActive = i === index;  // Activer uniquement le board cliqué
+      });
+    },
 
 
 
 
-        }
+
+
+
+
+      }
+
 })
-
-
-
-
 
 
 
