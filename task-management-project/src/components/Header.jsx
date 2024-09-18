@@ -6,6 +6,7 @@ import elipsis from "../assets/icon-vertical-ellipsis.svg";
 import HeaderDropdown from '../components/HeaderDropdown';
 import AddEditBoardModal from "../modals/AddEditBoardModal";
 import { useDispatch, useSelector } from "react-redux";
+import AddEditTaskModal from '../modals/AddEditTaskModal';
 
 
 function Header({setBoardModalOpen , boardModalOpen }) {
@@ -18,6 +19,12 @@ function Header({setBoardModalOpen , boardModalOpen }) {
     const dispatch = useDispatch();
     const boards = useSelector((state) => state.boards);
     const board = boards.find((board) => board.isActive);
+
+
+
+
+
+    const [openAddEditTaskModal, setOpenAddEditTaskModal] = useState(false)
 
 
     return (
@@ -55,7 +62,14 @@ function Header({setBoardModalOpen , boardModalOpen }) {
     + Add new task
 </button>
 
-<button className=" button py-1 px-3 md:hidden ">
+<button
+onClick={
+() => {
+    setOpenAddEditTaskModal(state => !state)
+}
+
+}
+className=" button py-1 px-3 md:hidden ">
             +
           </button>
 
@@ -74,6 +88,12 @@ function Header({setBoardModalOpen , boardModalOpen }) {
             {
                 // type add pour afficher la version add de modal
                 boardModalOpen && <AddEditBoardModal  type={boardtype}  setBoardModalOpen={setBoardModalOpen}/> 
+            }
+
+            {
+
+                openAddEditTaskModal && <AddEditTaskModal  />
+
             }
 
         </div >
