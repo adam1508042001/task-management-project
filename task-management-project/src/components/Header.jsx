@@ -28,12 +28,16 @@ function Header({setBoardModalOpen , boardModalOpen }) {
                 {/* left side */}
                 <div className="  flex items-center space-x-2  md:space-x-4">
                     <img src={Logo} alt=" Logo " className=" h-6 w-6" />
-                    <h3 className=" md:text-4xl  hidden md:inline-block font-bold  font-sans">
+                    <h3 className=" md:text-4xl   md:inline-block font-bold  font-sans">
                         TaskIt
                     </h3>
                     <div className=" cursor-pointer flex items-center ">
                         <h3 className=" truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans  ">
-                            {board.className}
+
+                            
+                            {board.name}
+
+
                         </h3>
 
                         <img src={openDropdown ? iconUp : iconDown} alt="dropDown icon " className=" w-3 ml-2 md:hidden" onClick={() => setOpenDropdown(state => !state)} />
@@ -61,11 +65,6 @@ function Header({setBoardModalOpen , boardModalOpen }) {
             className=" cursor-pointer h-6"
           />
                 </div>
-
-
-
-       
-
 
 
             </header >

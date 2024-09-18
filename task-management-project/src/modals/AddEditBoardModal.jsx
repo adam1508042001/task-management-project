@@ -7,7 +7,7 @@ import boardsSlice from "../redux/boardsSlice";
 
 
 
-function AddEditBoardModal({setBoardModalOpen, type,  }) {
+function AddEditBoardModal({setBoardModalOpen, type  }) {
 
   const [name, setName] = useState('');
   const [newColumns, setNewColumns] = useState(
@@ -29,6 +29,7 @@ function AddEditBoardModal({setBoardModalOpen, type,  }) {
 
     setNewColumns((pervState) =>  {
       const newState = [...pervState]
+      // le precedent tableau gardera que les lignes avec un id qui differe de l'id selecrtionné et passé a la function 
       const column = newState.find((col) => col.id === id)
       column.name = newValue
       return newState
@@ -119,6 +120,11 @@ function AddEditBoardModal({setBoardModalOpen, type,  }) {
           />
         </div>
 
+
+
+
+
+
           {/* Board Columns */}
 
           <div className="mt-8 flex flex-col space-y-3">
@@ -126,6 +132,8 @@ function AddEditBoardModal({setBoardModalOpen, type,  }) {
           <label className=" text-sm dark:text-white text-gray-500">
             Board Columns
           </label>
+
+
 
           {newColumns.map((column, index) => (
             <div key={index} className=" flex items-center w-full ">
@@ -137,6 +145,9 @@ function AddEditBoardModal({setBoardModalOpen, type,  }) {
                 type="text"
                 value={column.name}
               />
+              
+
+              
               <img
                 src={crossIcon}
                 onClick={() => {
@@ -166,20 +177,12 @@ function AddEditBoardModal({setBoardModalOpen, type,  }) {
               className=" w-full items-center hover:opacity-70 dark:text-white dark:bg-[#635fc7] mt-8 relative  text-white bg-[#635fc7] py-2 rounded-full"
             >
               {type === "add" ? "Create New Board" : "Save Changes"}
+
+
             </button>
           </div>
-
-
           </div>
-
-
-
-    
-
-         
-
       </div>
-
     </div>
   )
 }
