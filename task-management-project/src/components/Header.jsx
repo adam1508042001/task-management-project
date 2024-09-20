@@ -7,6 +7,7 @@ import HeaderDropdown from '../components/HeaderDropdown';
 import AddEditBoardModal from "../modals/AddEditBoardModal";
 import { useDispatch, useSelector } from "react-redux";
 import AddEditTaskModal from '../modals/AddEditTaskModal';
+import ElipsisMenu from './ElipsisMenu';
 
 
 function Header({setBoardModalOpen , boardModalOpen}) {
@@ -24,10 +25,28 @@ function Header({setBoardModalOpen , boardModalOpen}) {
 
 
 
-
     const [openAddEditTask, setOpenAddEditTask] = useState(false);
 
-        
+        const [isElipsisOpen, setIsElipsisOpen] = useState(false)
+
+
+        const [isElipsisMenuOpen, setIsElipsisMenuOpen] = useState(false);
+        const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    
+    
+        const setOpenEditModal = () => {
+            setBoardModalOpen(true);
+            setIsElipsisOpen(false);
+
+            
+          };
+
+          const setOpenDeleteModal = () => {
+            setIsDeleteModalOpen(true);
+            setIsElipsisOpen(false);
+          };
+          
+
 
     return (
         <div className=" p-4 fixed left-0 bg-gray-400 dark:bg-[#2b2c37] z-50 right-0 ">
@@ -57,6 +76,9 @@ function Header({setBoardModalOpen , boardModalOpen}) {
                     </div>
                 </div>
 
+
+                {/* ###################################################### */}
+
                 {/* right side */}
                 
                 <div className=" flex space-x-4 items-center md:space-x-6 ">
@@ -79,6 +101,15 @@ className=" button py-1 px-3 md:hidden ">
             src={elipsis}
             alt="elipsis"
             className=" cursor-pointer h-6"
+            onClick={() => {
+                
+                setBoardtype('edit');
+                setOpenDropdown(false)
+                setIsElipsisOpen(state => !state)
+                
+
+            }}
+            
           />
                 </div>
 
@@ -97,6 +128,13 @@ className=" button py-1 px-3 md:hidden ">
                 openAddEditTask && <AddEditTaskModal  setOpenAddEditTask={setOpenAddEditTask}    device='mobile' type='add'
                  />
 
+            }
+
+
+            {
+              isElipsisOpen && <ElipsisMenu  type = 'Boards'
+              setOpenDeleteModal={setOpenDeleteModal} 
+              setOpenEditModal={setOpenEditModal} /> 
             }
 
         </div >
