@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddEditTaskModal from '../modals/AddEditTaskModal';
 
 
-function Header({setBoardModalOpen , boardModalOpen, }) {
+function Header({setBoardModalOpen , boardModalOpen}) {
 
 
     const [openDropdown, setOpenDropdown] = useState(false)
@@ -24,8 +24,10 @@ function Header({setBoardModalOpen , boardModalOpen, }) {
 
 
 
-    const [openAddEditTask, setOpenAddEditTask] = useState(false)
 
+    const [openAddEditTask, setOpenAddEditTask] = useState(false);
+
+        
 
     return (
         <div className=" p-4 fixed left-0 bg-gray-400 dark:bg-[#2b2c37] z-50 right-0 ">
@@ -92,7 +94,7 @@ className=" button py-1 px-3 md:hidden ">
 
             {
 
-                openAddEditTask && <AddEditTaskModal  setOpenAddEditTask={setOpenAddEditTask} device='mobile' 
+                openAddEditTask && <AddEditTaskModal  setOpenAddEditTask={setOpenAddEditTask}    device='mobile' type='add'
                  />
 
             }

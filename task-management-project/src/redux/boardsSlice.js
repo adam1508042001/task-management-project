@@ -33,7 +33,23 @@ const boardsSlice = createSlice({
       });
     },
 
+    addTask: (state, action) => {
+      const { title, status, description, subtasks, newColIndex } =
+        action.payload;
+      const task = { title, description, subtasks, status };
+      const board = state.find((board) => board.isActive);
+      const column = board.columns.find((col, index) => index === newColIndex);
+      column.tasks.push(task);
+    },
 
+    setSubtaskCompleted: (state, action) => {
+      const payload = action.payload;
+      const board = state.find((board) => board.isActive);
+      const col = board.columns.find((col, i) => i === payload.colIndex);
+      const task = col.tasks.find((task, i) => i === payload.taskIndex);
+      const subtask = task.subtasks.find((subtask, i) => i === payload.index);
+      subtask.isCompleted = !subtask.isCompleted;
+    },
 
 
 
