@@ -2,11 +2,11 @@ import React from 'react'
 
 function ElipsisMenu({ type, setOpenEditModal, setOpenDeleteModal }) {
 
-   
+
 
     return (
 
-        
+
 
 
         <div
@@ -33,6 +33,11 @@ function ElipsisMenu({ type, setOpenEditModal, setOpenDeleteModal }) {
                     </p>
 
                     <p
+                        onClick={() => {
+                            setOpenDeleteModal(
+                            );
+                        }}
+
                         className=" cursor-pointer text-red-500"
                     >
                         {/* ####################################################### */}
