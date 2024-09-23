@@ -10,6 +10,10 @@ import boardsSlice from "../redux/boardsSlice";
 function AddEditBoardModal({setBoardModalOpen, type  }) {
 
   const [name, setName] = useState('');
+  const board = useSelector((state) => state.boards).find(
+    (board) => board.isActive
+  );
+
   const [newColumns, setNewColumns] = useState(
     [
       
@@ -20,11 +24,22 @@ function AddEditBoardModal({setBoardModalOpen, type  }) {
     ]
   )
 
-  const [isValid, setIsValid] = useState(true);
-  const board = useSelector((state) => state.boards).find(
-    (board) => board.isActive
+  const [isFirstLoad, setIsFirstLoad] = useState(true)
+
+
+if (type === 'edit' && isFirstLoad) {
+  setNewColumns(
+    board.columns.map((col) => {
+      return { ...col, id: uuidv4() };
+    })
   );
 
+  setName(board.name);
+  setIsFirstLoad(false);
+}
+
+  const [isValid, setIsValid] = useState(true);
+ 
   const onChange = (id , newValue ) => {
 
     setNewColumns((pervState) =>  {
