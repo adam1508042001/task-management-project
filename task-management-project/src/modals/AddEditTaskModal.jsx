@@ -7,11 +7,13 @@ import boardsSlice from "../redux/boardsSlice";
 
 
 
-function AddEditTaskModal({  type,
+function AddEditTaskModal({ 
+  
+  type,
     device,
     setIsTaskModalOpen,
-    setIsAddTaskModalOpen,
     setOpenAddEditTask,
+    setIsAddTaskModalOpen,
     taskIndex,
     prevColIndex = 0,}) {
 
@@ -105,6 +107,9 @@ function AddEditTaskModal({  type,
         };
     
 
+      const [isElipsisOpen, setIsElipsisOpen] = useState(false)  
+
+
     // ######## RETURN ##############
 
     return (
@@ -114,7 +119,8 @@ function AddEditTaskModal({  type,
                 if (e.target !== e.currentTarget) {
                     return;
                 }
-                setIsAddTaskModalOpen(false)
+               setOpenAddEditTask(false)
+
             }}
 
 
@@ -264,6 +270,8 @@ function AddEditTaskModal({  type,
            {type === "edit" ? " save edit" : "Create task"}
           </button>
 
+
+            
                 </div>
 
 
