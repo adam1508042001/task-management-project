@@ -38,7 +38,7 @@ className='overflow-hidden overflow-x-scroll'
 
 
             {/* center section */}
-            <Center />
+            <Center boardModalOpen={boardModalOpen} setBoardModalOpen={setBoardModalOpen} />
           </>
           :
           <>
