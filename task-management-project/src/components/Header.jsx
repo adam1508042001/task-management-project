@@ -187,7 +187,8 @@ function Header({ setBoardModalOpen, boardModalOpen }) {
 
             {
                 // type add pour afficher la version add de modal
-                boardModalOpen && <AddEditBoardModal type={boardtype} setBoardModalOpen={setBoardModalOpen} />
+                boardModalOpen && <AddEditBoardModal type={boardtype} boardModalOpen={boardModalOpen}
+                setBoardModalOpen={setBoardModalOpen}  />
             }
 
             {
