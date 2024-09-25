@@ -19,12 +19,9 @@ body {
   }
 
   .select-status {
-ackground-image: url('./assets/icon-chevron-down.svg');
-appearance: none;
+  background-image: url('./assets/icon-chevron-down.svg');
+  appearance: none;
   background-repeat: no-repeat;
-  background-position: right 16px top  ;
-
-
-
+  background-position: right 15px center ;
   }
  
