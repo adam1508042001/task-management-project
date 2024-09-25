@@ -35,24 +35,27 @@ import Task from "./Task";
       
       
       
-        // const handleOnDrop = (e) => {
-        //   const { prevColIndex, taskIndex } = JSON.parse(
-        //     e.dataTransfer.getData("text")
-        //   );
+         const handleOnDrop = (e) => {
+          const { prevColIndex, taskIndex } = JSON.parse(
+           e.dataTransfer.getData("text")
+         )
+             if (colIndex !== prevColIndex) {
+            dispatch(
+              boardsSlice.actions.dragTask({ colIndex, prevColIndex, taskIndex })
+            )
+          }
+        };
       
-        //   if (colIndex !== prevColIndex) {
-        //     dispatch(
-        //       boardsSlice.actions.dragTask({ colIndex, prevColIndex, taskIndex })
-        //     );
-        //   }
-        // };
       
-        // const handleOnDragOver = (e) => {
-        //   e.preventDefault();
-        // };
+      
+        const handleOnDragOver = (e) => {
+           e.preventDefault();
+         };
 
   return (
     <div
+    onDragOver={handleOnDragOver}
+    onDrop={handleOnDrop}
     className="scrollbar-hide   mx-5 pt-[90px] min-w-[280px] "
     >
        <p className=" font-semibold flex  items-center  gap-2 tracking-widest md:tracking-[.2em] text-[#828fa3]">
@@ -61,7 +64,8 @@ import Task from "./Task";
       </p>
 
       {
-        col.tasks.map((task, index) => <Task key={index} taskIndex={index} colIndex={colIndex}/>)
+        col.tasks.map((task, index) => 
+        <Task key={index} taskIndex={index} colIndex={colIndex}/>)
       }
 
      
