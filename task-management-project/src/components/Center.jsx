@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import Sidebar from './Sidebar'
 import { useSelector  } from 'react-redux'
 import Column from './Column'
+import EmptyBoard from './EmptyBoard'
+import AddEditBoardModal from '../modals/AddEditBoardModal'
 
 function Center({boardModalOpen, setBoardModalOpen}) {
 
@@ -61,12 +63,42 @@ function Center({boardModalOpen, setBoardModalOpen}) {
       )}
 
      {/* section  colonne  */}
-     {
 
-        columns.map((col , index) =>
-             <Column key={index} colIndex={index}/>)
+        {
+          columns.length > 0 ? (
+            <>
+              {
 
-     }
+                columns.map((col, index) =>
+                  <Column key={index} colIndex={index} />)
+
+              }
+              <div
+              className='h-screen dark:bg-[#2b2c3740] flex justify-center items-center font-bold text-2xl hover:text-[#635fc7] transition duration-300 cursor-pointer bg-[#e9effa] scrollbar-hide mb-2 mx-5 pt-[90px] min-w-[280px] text-[#828fa3] mt-[135px] rounded-lg '
+              onClick={() =>{
+                setBoardModalOpen(true)
+              }}
+              >
+                     + New Column
+              </div>
+            </>) :
+            <>
+            <EmptyBoard type='edit' />
+            </>
+
+          
+      }
+
+      {
+boardModalOpen && (
+  <AddEditBoardModal type='edit' setBoardModalOpen={setBoardModalOpen}  />
+
+)
+
+      }
+
+
+    
 
 
         </div>
