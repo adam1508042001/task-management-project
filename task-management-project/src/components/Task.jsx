@@ -22,10 +22,20 @@ subtasks.forEach((subtasks) => {
 });
 
 
+
+const handleOnDrag = (e) => {
+  e.dataTransfer.setData(
+    "text",
+    JSON.stringify({ taskIndex, prevColIndex : colIndex })
+  )
+}
+
+
 return (
     <div>
       <div
-
+        draggable
+        onDragStart={handleOnDrag}
        onClick={() => {
         setIsTaskModalOpen(true);
       }}
