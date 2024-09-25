@@ -15,6 +15,8 @@ function Center({boardModalOpen, setBoardModalOpen}) {
     )
 
 
+    const [isBoardModalOpen, setIsBoardModalOpen] = useState(false);
+
 
     useEffect(() => {
         const handleWindowResize = () => {
