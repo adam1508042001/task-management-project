@@ -6,9 +6,10 @@ import elipsis from "../assets/icon-vertical-ellipsis.svg";
 import Subtask from '../components/Subtask';
 import boardsSlice from '../redux/boardsSlice';
 import DeleteModal from './DeleteModal';
+import AddEditTaskModal from './AddEditTaskModal';
 
-function TaskModal({colIndex , taskIndex, setIsTaskModalOpen}) {
-  
+function TaskModal({colIndex , taskIndex, setIsTaskModalOpen, }) {
+
 
   const dispatch = useDispatch()
   const boards = useSelector(state => state.boards)
@@ -74,6 +75,8 @@ const onDeleteBtnClick = () => {
 setIsTaskModalOpen(false)
 setIsDeleteModalOpen(false)
 }
+
+
 
 
 
@@ -187,6 +190,19 @@ return (
     />
   )
 }
+
+{
+  isAddTaskModalOpen &&  
+    <AddEditTaskModal 
+    setOpenAddEditTask={setIsAddTaskModalOpen}
+    type='edit'
+    taskIndex={taskIndex}
+    colIndex={colIndex}
+    setIsAddTaskModalOpen={setIsTaskModalOpen}
+    />
+  
+}
+
 
     </div>
   )
